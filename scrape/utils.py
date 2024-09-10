@@ -34,7 +34,10 @@ class ProcessingData:
     @staticmethod
     def process_technologies(description: str, technologies: list) -> list:
         if description != "N/A":
-            found_technologies = [tech for tech in technologies if tech.lower() in description.lower()]
+            found_technologies = [
+                tech for tech in technologies
+                if tech.lower() in description.lower()
+            ]
         else:
             found_technologies = []
         return found_technologies
