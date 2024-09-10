@@ -4,6 +4,16 @@ CATEGORIES_URLS = {
     "Python": BASE_URL + "?category=Python"
 }
 
+LEVELS = [
+    "UNKNOWN",
+    "TRAINEE",
+    "JUNIOR",
+    "MIDDLE",
+    "SENIOR",
+    "TEAM LEAD",
+    "HEAD"
+]
+
 TECHNOLOGIES = [
     "CircleCI", "Infrastructure Monitoring", "Static Site Generators",
     "Continuous Integration (CI)", "Flask", "Beautiful Soup", "Penetration Testing",
