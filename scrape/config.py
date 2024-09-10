@@ -14,6 +14,13 @@ LEVELS = [
     "HEAD"
 ]
 
+EXPERIENCE = [
+    "0-1",
+    "1-3",
+    "3-5",
+    "5plus",
+]
+
 TECHNOLOGIES = [
     "CircleCI", "Infrastructure Monitoring", "Static Site Generators",
     "Continuous Integration (CI)", "Flask", "Beautiful Soup", "Penetration Testing",
