@@ -141,9 +141,3 @@ class DouJobScraper:
             writer.writeheader()
             for job in tqdm(job_listings, desc="Saving jobs to CSV"):
                 writer.writerow(job)
-
-
-if __name__ == "__main__":
-    for category, url in CATEGORIES_URLS.items():
-        scraper = DouJobScraper(base_url=url)
-        asyncio.run(scraper.scrape_jobs())
