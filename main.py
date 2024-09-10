@@ -1,9 +1,6 @@
 import asyncio
 
-from scrape.config import CATEGORIES_URLS
-from scrape.scraper import DouJobScraper
+from scrape.scraper import scrape_with_experience
 
 if __name__ == "__main__":
-    for category, url in CATEGORIES_URLS.items():
-        scraper = DouJobScraper(base_url=url)
-        asyncio.run(scraper.scrape_jobs())
+    asyncio.run(scrape_with_experience())
