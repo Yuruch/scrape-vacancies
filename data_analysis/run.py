@@ -5,7 +5,6 @@ from data_analysis.analyse import (
     get_min_salary_by_level,
     get_counts_by_name,
     get_experience_count_df,
-
 )
 from data_analysis.clean import clean_data
 from data_analysis.plots import (

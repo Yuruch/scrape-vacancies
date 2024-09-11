@@ -7,7 +7,9 @@ from data_analysis.run import main as data_analysis_main
 
 def main():
     if os.path.exists(os.path.join(RESULT_DIR, "Python_jobs.csv")):
-        answer = input("Scraped data already exists. Do you want to overwrite it? (y/n)")
+        answer = input(
+            "Scraped data already exists. Do you want to overwrite it? (y/n)"
+        )
         if answer.lower() == "y":
             scrape_main()
     else:

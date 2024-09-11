@@ -2,7 +2,7 @@ import asyncio
 from typing import List
 
 from bs4 import BeautifulSoup
-from playwright.async_api import async_playwright
+from playwright.async_api import async_playwright, Page
 from tqdm.asyncio import tqdm
 
 from config import CATEGORIES_URLS, LEVELS, TECHNOLOGIES, EXPERIENCE
@@ -11,7 +11,13 @@ from scrape.utils import ProcessingData
 
 
 class DouJobScraper:
-    def __init__(self, base_url: str, experience: str, category: str, browser) -> None:
+    def __init__(
+        self,
+        base_url: str,
+        experience: str,
+        category: str,
+        browser
+    ) -> None:
         self.base_url = base_url
         self.experience = experience
         self.category = category
@@ -21,7 +27,7 @@ class DouJobScraper:
         await page.goto(self.base_url)
         await asyncio.sleep(3)
 
-    async def click_show_more(self, page):
+    async def click_show_more(self, page: Page) -> None:
         while True:
             try:
                 more_btn_div = await page.wait_for_selector(
@@ -35,7 +41,7 @@ class DouJobScraper:
             except Exception:
                 break
 
-    async def scrape_jobs(self):
+    async def scrape_jobs(self) -> list:
         page = await self.browser.new_page()
         try:
             await self.load_page(page)
@@ -51,13 +57,13 @@ class DouJobScraper:
             await page.close()
         return job_listings
 
-    async def parse_job_listings(self, soup) -> List[dict]:
+    async def parse_job_listings(self, soup: BeautifulSoup) -> List[dict]:
         job_listings = []
         jobs = soup.find_all("li", class_="l-vacancy")
 
         print(f"Found {len(jobs)} jobs")
 
-        async def process_job(job):
+        async def process_job(job) -> dict:
             title_tag = job.find("a", class_="vt")
             title = title_tag.text if title_tag else "N/A"
             level = ProcessingData.process_level(title, LEVELS)
@@ -66,13 +72,19 @@ class DouJobScraper:
             company_tag = job.find("a", class_="company")
             company = company_tag.text if company_tag else "N/A"
 
-            salary = job.find("span", class_="salary").text if job.find("span", class_="salary") else "N/A"
-            min_salary, max_salary = ProcessingData.process_salary(salary.replace("\xa0", ""))
+            salary = job.find(
+                "span", class_="salary"
+            ).text if job.find("span", class_="salary") else "N/A"
+            min_salary, max_salary = ProcessingData.process_salary(
+                salary.replace("\xa0", "")
+            )
 
             location_tag = job.find("span", class_="cities")
             location = location_tag.text.strip() if location_tag else "N/A"
             description = await self.fetch_job_technologies(link)
-            technologies = ProcessingData.process_technologies(description, TECHNOLOGIES)
+            technologies = ProcessingData.process_technologies(
+                description, TECHNOLOGIES
+            )
 
             return {
                 "title": title.replace("\xa0", ""),
@@ -117,7 +129,7 @@ class DouJobScraper:
         return description.replace("\xa0", "")
 
 
-async def scrape_with_experience():
+async def scrape_with_experience() -> None:
     async with async_playwright() as p:
         browser = await p.chromium.launch(headless=True)
         for category, base_url in CATEGORIES_URLS.items():
@@ -125,7 +137,12 @@ async def scrape_with_experience():
             for experience in EXPERIENCE:
                 url = f"{base_url}&exp={experience}"
                 print(f"Scraping {url}")
-                scraper = DouJobScraper(base_url=url, experience=experience, category=category, browser=browser)
+                scraper = DouJobScraper(
+                    base_url=url,
+                    experience=experience,
+                    category=category,
+                    browser=browser
+                )
                 scraped_jobs = await scraper.scrape_jobs()
                 jobs.extend(scraped_jobs)
             FileWriter.write_csv(data=jobs, category=category)

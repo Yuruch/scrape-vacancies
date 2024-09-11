@@ -83,5 +83,3 @@ TECHNOLOGIES = [
     "Deep Learning", "Node.js", "TypeScript", "React", "CSS", "HTML", "JavaScript", "Next.js",
     "Amazon Web Services", "DigitalOcean", "aiogram", "Telethon",
 ]
-
-

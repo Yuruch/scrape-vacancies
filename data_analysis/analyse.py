@@ -1,5 +1,5 @@
-import pandas as pd
 import numpy as np
+import pandas as pd
 
 
 def get_counts_by_name(df: pd.DataFrame, col_name: str) -> pd.DataFrame:
@@ -29,5 +29,3 @@ def get_experience_count_df(df):
 
     print(experience_summary_df.head())
     return experience_summary_df
-
-

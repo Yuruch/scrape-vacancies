@@ -1,7 +1,7 @@
 import os
 
-import pandas as pd
 import matplotlib.pyplot as plt
+import pandas as pd
 
 from config import PLOT_DIR
 
@@ -31,11 +31,13 @@ def get_salaries_by_level_plots(df: pd.DataFrame) -> None:
             )
             ax.set_ylabel("")
             plt.tight_layout()
-            plt.savefig(os.path.join(PLOT_DIR, f"{level}_min_salary_plot.png"))
+            plt.savefig(
+                os.path.join(PLOT_DIR, f"{level}_min_salary_plot.png")
+            )
             plt.close()
 
 
-def plot_experience_distribution(df):
+def plot_experience_distribution(df: pd.DataFrame) -> None:
     levels = df.index
 
     for level in levels:
@@ -51,6 +53,7 @@ def plot_experience_distribution(df):
                 startangle=140
             )
             plt.title(f"Experience Distribution for {level}")
-            plt.savefig(os.path.join(PLOT_DIR, f"{level}_experience_distribution_plot"))
+            plt.savefig(
+                os.path.join(PLOT_DIR, f"{level}_experience_distribution_plot")
+            )
             plt.close()
-
