@@ -32,7 +32,7 @@ class ProcessingData:
         return matching_levels.pop() if matching_levels else "N/A"
 
     @staticmethod
-    def process_technologies(description: str, technologies: list) -> list:
+    def process_technologies(description: str, technologies: list) -> str:
         if description != "N/A":
             found_technologies = [
                 tech for tech in technologies
@@ -40,4 +40,4 @@ class ProcessingData:
             ]
         else:
             found_technologies = []
-        return found_technologies
+        return ", ".join(found_technologies).strip(", ")
