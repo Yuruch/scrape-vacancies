@@ -12,8 +12,7 @@ from data_analysis.plots import (
 
 )
 
-
-if __name__ == "__main__":
+def main():
     if not os.path.exists("./result_plots"):
         os.makedirs("./result_plots")
     dataframe = clean_data("../results/Python_jobs.csv")
@@ -30,3 +29,6 @@ if __name__ == "__main__":
     get_salaries_by_level_plots(min_salary_by_level_df)
     plot_experience_distribution(experience_summary_df)
 
+
+if __name__ == "__main__":
+    main()

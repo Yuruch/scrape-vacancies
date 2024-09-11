@@ -1,6 +1,8 @@
 import asyncio
 
-from scrape.scraper import scrape_with_experience
+from scrape.run import main as scrape_main
+from data_analysis.run import main as data_analysis_main
 
 if __name__ == "__main__":
-    asyncio.run(scrape_with_experience())
+    scrape_main()
+    data_analysis_main()
