@@ -62,8 +62,8 @@ TECHNOLOGIES = [
     "Responsive design", "Grafana", "Client-side rendering", "Scalability",
     "Server-side rendering (SSR)", "NoSQL", "Micro Frontends", "PyQt", "XML",
     "Private Cloud", "Prometheus", "DevOps", "XP (Extreme Programming)",
-    "Frontend frameworks (React, Angular, Vue)", "Cross-platform development",
-    "Serverless", "IT Governance", "AWS (Amazon Web Services)", "Data Engineering",
+    "React", "Angular", "Vue.js", "Cross-platform development",
+    "Serverless", "IT Governance", "AWS", "Data Engineering",
     "Application Performance Monitoring (APM)", "Security Testing", "Bitbucket",
     "TensorFlow", "Progressive Web Apps (PWA)", "WebSocket", "Jenkins", "WebSockets",
     "Dashboards", "Identity and Access Management (IAM)", "SaaS (Software as a Service)",
@@ -75,6 +75,8 @@ TECHNOLOGIES = [
     "Smart Contract Auditing", "Intrusion Detection System (IDS)", "Data Governance",
     "Natural Language Processing (NLP)", "Cloud Computing", "CI/CD (Continuous Integration/Continuous Deployment)",
     "OWASP Top Ten", "Google Cloud Platform (GCP)", "Pandas", "Agile", "Headless CMS",
-    "Deep Learning"
+    "Deep Learning", "Node.js", "TypeScript", "React", "CSS", "HTML", "JavaScript", "Next.js",
+    "Amazon Web Services", "DigitalOcean", "aiogram", "Telethon",
 ]
+
 
