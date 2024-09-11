@@ -1,21 +1,23 @@
 import os
 
+from config import RESULT_DIR
 from data_analysis.analyse import (
     get_min_salary_by_level,
-    get_counts_by_name, get_experience_count_df,
+    get_counts_by_name,
+    get_experience_count_df,
 
 )
 from data_analysis.clean import clean_data
 from data_analysis.plots import (
     get_salaries_by_level_plots,
-    get_count_plot, plot_experience_distribution,
-
+    get_count_plot,
+    plot_experience_distribution,
 )
 
+
 def main():
-    if not os.path.exists("./result_plots"):
-        os.makedirs("./result_plots")
-    dataframe = clean_data("../results/Python_jobs.csv")
+    print(os.path.join(RESULT_DIR, "Python_jobs.csv"))
+    dataframe = clean_data(os.path.join(RESULT_DIR, "Python_jobs.csv"))
 
     tech_df = get_counts_by_name(dataframe, "technologies")
     locations_df = get_counts_by_name(dataframe, "location")

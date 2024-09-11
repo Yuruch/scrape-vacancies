@@ -1,8 +1,13 @@
-BASE_URL = "https://jobs.dou.ua/vacancies/"
+import os
 
+BASE_URL = "https://jobs.dou.ua/vacancies/"
 CATEGORIES_URLS = {
     "Python": BASE_URL + "?category=Python"
 }
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+RESULT_DIR = os.path.join(BASE_DIR, "results")
+PLOT_DIR = os.path.join(BASE_DIR, "result_plots")
 
 LEVELS = [
     "UNKNOWN",

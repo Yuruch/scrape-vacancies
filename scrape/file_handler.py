@@ -1,14 +1,16 @@
 import csv
-from datetime import datetime
+import os
 from typing import List
 
 from tqdm import tqdm
+
+from config import RESULT_DIR
 
 
 class FileWriter:
     @staticmethod
     def write_csv(data: List[dict], category: str) -> None:
-        filename = f"./results/{category}_jobs.csv"
+        filename = os.path.join(RESULT_DIR, f"{category}_jobs.csv")
 
         with open(filename, mode="w", newline="") as file:
             fieldnames = list(data[0].keys())

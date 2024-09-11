@@ -1,13 +1,11 @@
 import asyncio
-import csv
-from datetime import datetime
 from typing import List
 
 from bs4 import BeautifulSoup
 from playwright.async_api import async_playwright
 from tqdm.asyncio import tqdm
 
-from scrape.config import CATEGORIES_URLS, LEVELS, TECHNOLOGIES, EXPERIENCE
+from config import CATEGORIES_URLS, LEVELS, TECHNOLOGIES, EXPERIENCE
 from scrape.file_handler import FileWriter
 from scrape.utils import ProcessingData
 

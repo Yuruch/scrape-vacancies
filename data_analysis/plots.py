@@ -1,5 +1,9 @@
+import os
+
 import pandas as pd
 import matplotlib.pyplot as plt
+
+from config import PLOT_DIR
 
 
 def get_count_plot(df: pd.DataFrame, name: str) -> None:
@@ -9,7 +13,7 @@ def get_count_plot(df: pd.DataFrame, name: str) -> None:
     plt.ylabel("Count")
     plt.title(f"{name} Counts")
     plt.tight_layout()
-    plt.savefig(f"./result_plots/{name}_plot.png")
+    plt.savefig(os.path.join(PLOT_DIR, f"{name}_plot.png"))
     plt.close()
 
 
@@ -27,7 +31,7 @@ def get_salaries_by_level_plots(df: pd.DataFrame) -> None:
             )
             ax.set_ylabel("")
             plt.tight_layout()
-            plt.savefig(f"./result_plots/{level}_min_salary_plot.png")
+            plt.savefig(os.path.join(PLOT_DIR, f"{level}_min_salary_plot.png"))
             plt.close()
 
 
@@ -47,6 +51,6 @@ def plot_experience_distribution(df):
                 startangle=140
             )
             plt.title(f"Experience Distribution for {level}")
-            plt.savefig(f"./result_plots/{level}_experience_distribution_plot.png")
+            plt.savefig(os.path.join(PLOT_DIR, f"{level}_experience_distribution_plot"))
             plt.close()
 
