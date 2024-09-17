@@ -3,6 +3,8 @@ import pandas as pd
 
 
 def get_counts_by_name(df: pd.DataFrame, col_name: str) -> pd.DataFrame:
+    if col_name not in df.columns:
+        raise ValueError(f"Column '{col_name}' not found in DataFrame")
     df = df[col_name].explode().value_counts()
     return df.head(30)
 
@@ -27,5 +29,4 @@ def get_experience_count_df(df):
         index="level", columns="experience", values="count"
     ).fillna(0).astype(int)
 
-    print(experience_summary_df.head())
     return experience_summary_df

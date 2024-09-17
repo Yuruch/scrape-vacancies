@@ -14,7 +14,7 @@ def split_data(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
-def clean_technologies(df: pd.DataFrame) -> None:
+def clean_locations(df: pd.DataFrame) -> None:
     df["location"] = df["location"].apply(
         lambda x: np.nan if len(str(x)) > 50 else x
     )
@@ -30,5 +30,5 @@ def clean_data(filename: str) -> pd.DataFrame:
 
     df.replace("N/A", np.nan, inplace=True)
     df = split_data(df)
-    clean_technologies(df)
+    clean_locations(df)
     return df

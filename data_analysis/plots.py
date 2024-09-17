@@ -54,6 +54,6 @@ def plot_experience_distribution(df: pd.DataFrame) -> None:
             )
             plt.title(f"Experience Distribution for {level}")
             plt.savefig(
-                os.path.join(PLOT_DIR, f"{level}_experience_distribution_plot")
+                os.path.join(PLOT_DIR, f"{level}_experience_distribution_plot.png")
             )
             plt.close()

@@ -1,5 +1,6 @@
 import os
 
+
 BASE_URL = "https://jobs.dou.ua/vacancies/"
 CATEGORIES_URLS = {
     "Python": BASE_URL + "?category=Python"
